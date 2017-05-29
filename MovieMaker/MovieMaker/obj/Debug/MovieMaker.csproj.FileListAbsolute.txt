@@ -1,0 +1,65 @@
+C:\projects\MovieMaker\MovieMaker\bin\Debug\MovieMaker.exe.config
+C:\projects\movie-maker\MovieMaker\bin\Debug\MovieMaker.exe.config
+C:\projects\movie-maker\MovieMaker\bin\Debug\MovieMaker.exe
+C:\projects\movie-maker\MovieMaker\bin\Debug\MovieMaker.pdb
+C:\projects\movie-maker\MovieMaker\obj\Debug\MovieMaker.csprojResolveAssemblyReference.cache
+C:\projects\movie-maker\MovieMaker\obj\Debug\view\MainWindow.g.cs
+C:\projects\movie-maker\MovieMaker\obj\Debug\App.g.cs
+C:\projects\movie-maker\MovieMaker\obj\Debug\MovieMaker_MarkupCompile.cache
+C:\projects\movie-maker\MovieMaker\obj\Debug\MovieMaker_MarkupCompile.lref
+C:\projects\movie-maker\MovieMaker\obj\Debug\view\MainWindow.baml
+C:\projects\movie-maker\MovieMaker\obj\Debug\MovieMaker.g.resources
+C:\projects\movie-maker\MovieMaker\obj\Debug\MovieMaker.Properties.Resources.resources
+C:\projects\movie-maker\MovieMaker\obj\Debug\MovieMaker.csproj.GenerateResource.Cache
+C:\projects\movie-maker\MovieMaker\obj\Debug\MovieMaker.exe
+C:\projects\movie-maker\MovieMaker\obj\Debug\MovieMaker.pdb
+C:\projects\movie-maker\MovieMaker\obj\Debug\view\Results.g.cs
+C:\projects\movie-maker\MovieMaker\obj\Debug\view\Results.baml
+F:\Apps\Git Respository\MovieMaker\MovieMaker\bin\Debug\MovieMaker.exe.config
+F:\Apps\Git Respository\MovieMaker\MovieMaker\obj\Debug\MovieMaker.exe
+F:\Apps\Git Respository\MovieMaker\MovieMaker\obj\Debug\MovieMaker.pdb
+D:\Git\MovieMaker\MovieMaker\bin\Debug\MovieMaker.exe.config
+D:\Git\MovieMaker\MovieMaker\obj\Debug\MovieMaker.exe
+D:\Git\MovieMaker\MovieMaker\obj\Debug\MovieMaker.pdb
+F:\Apps\Git Respository\MovieMaker\MovieMaker\bin\Debug\MovieMaker.exe
+F:\Apps\Git Respository\MovieMaker\MovieMaker\bin\Debug\MovieMaker.pdb
+F:\Apps\Git Respository\MovieMaker\MovieMaker\obj\Debug\MovieMaker.csprojResolveAssemblyReference.cache
+F:\Apps\Git Respository\MovieMaker\MovieMaker\obj\Debug\view\MainWindow.g.cs
+F:\Apps\Git Respository\MovieMaker\MovieMaker\obj\Debug\view\Results.g.cs
+F:\Apps\Git Respository\MovieMaker\MovieMaker\obj\Debug\App.g.cs
+F:\Apps\Git Respository\MovieMaker\MovieMaker\obj\Debug\MovieMaker_MarkupCompile.cache
+F:\Apps\Git Respository\MovieMaker\MovieMaker\obj\Debug\MovieMaker_MarkupCompile.lref
+F:\Apps\Git Respository\MovieMaker\MovieMaker\obj\Debug\view\MainWindow.baml
+F:\Apps\Git Respository\MovieMaker\MovieMaker\obj\Debug\view\Results.baml
+F:\Apps\Git Respository\MovieMaker\MovieMaker\obj\Debug\MovieMaker.g.resources
+F:\Apps\Git Respository\MovieMaker\MovieMaker\obj\Debug\MovieMaker.Properties.Resources.resources
+F:\Apps\Git Respository\MovieMaker\MovieMaker\obj\Debug\MovieMaker.csproj.GenerateResource.Cache
+D:\Git\MovieMaker\MovieMaker\bin\Debug\MovieMaker.exe
+D:\Git\MovieMaker\MovieMaker\bin\Debug\MovieMaker.pdb
+D:\Git\MovieMaker\MovieMaker\obj\Debug\MovieMaker.csprojResolveAssemblyReference.cache
+D:\Git\MovieMaker\MovieMaker\obj\Debug\view\MainWindow.g.cs
+D:\Git\MovieMaker\MovieMaker\obj\Debug\view\Results.g.cs
+D:\Git\MovieMaker\MovieMaker\obj\Debug\App.g.cs
+D:\Git\MovieMaker\MovieMaker\obj\Debug\MovieMaker_MarkupCompile.cache
+D:\Git\MovieMaker\MovieMaker\obj\Debug\MovieMaker_MarkupCompile.lref
+D:\Git\MovieMaker\MovieMaker\obj\Debug\view\MainWindow.baml
+D:\Git\MovieMaker\MovieMaker\obj\Debug\view\Results.baml
+D:\Git\MovieMaker\MovieMaker\obj\Debug\MovieMaker.g.resources
+D:\Git\MovieMaker\MovieMaker\obj\Debug\MovieMaker.Properties.Resources.resources
+D:\Git\MovieMaker\MovieMaker\obj\Debug\MovieMaker.csproj.GenerateResource.Cache
+C:\Users\windows\Source\Repos\MovieMaker\MovieMaker\bin\Debug\MovieMaker.exe.config
+C:\Users\windows\Source\Repos\MovieMaker\MovieMaker\obj\Debug\MovieMaker.exe
+C:\Users\windows\Source\Repos\MovieMaker\MovieMaker\obj\Debug\MovieMaker.pdb
+C:\Users\windows\Source\Repos\MovieMaker\MovieMaker\bin\Debug\MovieMaker.exe
+C:\Users\windows\Source\Repos\MovieMaker\MovieMaker\bin\Debug\MovieMaker.pdb
+C:\Users\windows\Source\Repos\MovieMaker\MovieMaker\obj\Debug\MovieMaker.csprojResolveAssemblyReference.cache
+C:\Users\windows\Source\Repos\MovieMaker\MovieMaker\obj\Debug\view\MainWindow.g.cs
+C:\Users\windows\Source\Repos\MovieMaker\MovieMaker\obj\Debug\view\Results.g.cs
+C:\Users\windows\Source\Repos\MovieMaker\MovieMaker\obj\Debug\App.g.cs
+C:\Users\windows\Source\Repos\MovieMaker\MovieMaker\obj\Debug\MovieMaker_MarkupCompile.cache
+C:\Users\windows\Source\Repos\MovieMaker\MovieMaker\obj\Debug\MovieMaker_MarkupCompile.lref
+C:\Users\windows\Source\Repos\MovieMaker\MovieMaker\obj\Debug\view\MainWindow.baml
+C:\Users\windows\Source\Repos\MovieMaker\MovieMaker\obj\Debug\view\Results.baml
+C:\Users\windows\Source\Repos\MovieMaker\MovieMaker\obj\Debug\MovieMaker.g.resources
+C:\Users\windows\Source\Repos\MovieMaker\MovieMaker\obj\Debug\MovieMaker.Properties.Resources.resources
+C:\Users\windows\Source\Repos\MovieMaker\MovieMaker\obj\Debug\MovieMaker.csproj.GenerateResource.Cache
