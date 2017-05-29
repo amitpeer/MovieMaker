@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\windows\Source\Repos\MovieMaker\MovieMaker\obj\Debug\
+C:\projects\MovieMaker\MovieMaker\MovieMaker\obj\Debug\
 MovieMaker
 none
 false
 DEBUG;TRACE
-C:\Users\windows\Source\Repos\MovieMaker\MovieMaker\App.xaml
+C:\projects\MovieMaker\MovieMaker\MovieMaker\App.xaml
 2124959106
 
-15-2070055716
+15-1531365538
 13738642453
 view\MainWindow.xaml;view\Results.xaml;
 
-False
+True
 

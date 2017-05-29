@@ -29,9 +29,7 @@ namespace MovieMaker.model
         Dictionary<int, string> movieName = new Dictionary<int, string>();
 
         public Model()
-        {
-            
-            
+        {                   
             selectedMovieNamesID.Add("Ace Ventura: When Nature Calls (1995)", 0);
             selectedMovieNamesID.Add("Toy Story (1995)", 0);
             selectedMovieNamesID.Add("Titanic (1997)", 0);
@@ -41,10 +39,9 @@ namespace MovieMaker.model
             selectedMovieNamesID.Add("Saving Private Ryan (1998)", 0);
             selectedMovieNamesID.Add("Space Jam (1996)", 0);
             selectedMovieNamesID.Add("Star Wars: Episode V - The Empire Strikes Back (1980)", 0);
-            selectedMovieNamesID.Add("Grease (1978)", 0);
-            
-
+            selectedMovieNamesID.Add("Grease (1978)", 0);          
         }
+
         public void findSelectedMoviesID(Dictionary<string, int> movieNamesID)
         {            
             foreach (var movie in MoviesList)
@@ -56,14 +53,10 @@ namespace MovieMaker.model
             }
         }
 
-
-
         public void findCommonMoviesRating()
         {
             foreach (var movieRating in MovieRatingList)
             {
-
-
                 if (selectedMovieNamesID.Values.Contains(movieRating.MovieID))
                 {
                     if (!CommonMoviesRating.Keys.Contains(movieRating.UserID))
@@ -76,8 +69,7 @@ namespace MovieMaker.model
                         CommonMoviesRating[movieRating.UserID].Add(movieRating.MovieID, movieRating.UserRating);
                     }
 
-                }
-                
+                }              
             }
         }
 
@@ -213,42 +205,30 @@ namespace MovieMaker.model
             _controller = controller;
         }
 
-        public List<string> addRanks(Dictionary<string, double> newRanksVector)
-        {
-            throw new NotImplementedException();
-        }
-
-        public double moviePredictedRank(string movie)
-        {
-            throw new NotImplementedException();
-        }
-
         public List<string> recommend(Dictionary<string, double> ranksVector)
         {
-            MoviesList = readSCVMovieFile(local_path+"\\model\\dataBase\\movies.csv");
-            MovieRatingList = readSCVRatingFile(local_path + "\\model\\dataBase\\ratings.csv");
-            findSelectedMoviesID(selectedMovieNamesID);
-            reversedDictoinary = reverseDictionary();
-            Dictionary<string, double> recommend = new Dictionary<string, double>();
-            findCommonMoviesRating();
-            findUserAvg(ranksVector);
-            calculateUserAverageRating();
-            recommend= findP(pearsonCorreleationWeight(ranksVector));
-            List<KeyValuePair<string,double>> top5 = recommend.OrderByDescending(pair => pair.Value).Take(5).ToList();
-            List<string> allKeys = (from kvp in top5 select kvp.Key).ToList();
-            return allKeys;
-
-
+            try
+            {
+                MoviesList = readSCVMovieFile(local_path + "\\model\\dataBase\\movies.csv");
+                MovieRatingList = readSCVRatingFile(local_path + "\\model\\dataBase\\ratings.csv");
+                findSelectedMoviesID(selectedMovieNamesID);
+                reversedDictoinary = reverseDictionary();
+                Dictionary<string, double> recommend = new Dictionary<string, double>();
+                findCommonMoviesRating();
+                findUserAvg(ranksVector);
+                calculateUserAverageRating();
+                recommend = findP(pearsonCorreleationWeight(ranksVector));
+                List<KeyValuePair<string, double>> top5 = recommend.OrderByDescending(pair => pair.Value).Take(5).ToList();
+                List<string> allKeys = (from kvp in top5 select kvp.Key).ToList();
+                return allKeys;
+            }
+            catch (Exception e)
+            {
+                List<string> errorMessage = new List<string>();
+                errorMessage.Add("recommendError");
+                return errorMessage;
+            }
         }
-        //private List<Vector<double>> ItemsVectorFromData(List<MovieRating> ratings)
-        //{
-        //    for (int i = 0; i < ratings.Count; i++)
-        //    {
-                
-        //    }
-        //    Vector<double> a = new DenseVector(new double[] { 1, 2, 3 });
-        //    return null;
-        //}
 
         //reading methods
         public List<MovieRating> readSCVRatingFile(string path)

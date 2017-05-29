@@ -10,10 +10,6 @@ namespace MovieMaker.controller
     {
         List<string> recommend(Dictionary<string, double> ranksVector);
 
-        List<string> addRanks(Dictionary<string, double> newRanksVector);
-
-        double moviePredictedRank(string movie);
-
         void echo(string message);
     }
 }

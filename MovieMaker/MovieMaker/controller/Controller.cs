@@ -24,16 +24,6 @@ namespace MovieMaker.controller
             return model.recommend(ranksVector);
         }
 
-        public List<string> addRanks(Dictionary<string, double> newRanksVector)
-        {
-            return model.addRanks(newRanksVector);
-        }
-
-        public double moviePredictedRank(string movie)
-        {
-            return model.moviePredictedRank(movie);
-        }
-
         public void echo(string message)
         {
             view.echo(message);

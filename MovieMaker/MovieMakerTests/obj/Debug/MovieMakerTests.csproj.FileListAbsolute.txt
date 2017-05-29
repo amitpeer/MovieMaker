@@ -1,0 +1,8 @@
+C:\projects\MovieMaker\MovieMaker\MovieMakerTests\bin\Debug\MovieMakerTests.dll
+C:\projects\MovieMaker\MovieMaker\MovieMakerTests\bin\Debug\MovieMakerTests.pdb
+C:\projects\MovieMaker\MovieMaker\MovieMakerTests\bin\Debug\Microsoft.VisualStudio.QualityTools.UnitTestFramework.dll
+C:\projects\MovieMaker\MovieMaker\MovieMakerTests\bin\Debug\MovieMaker.exe
+C:\projects\MovieMaker\MovieMaker\MovieMakerTests\bin\Debug\MovieMaker.pdb
+C:\projects\MovieMaker\MovieMaker\MovieMakerTests\obj\Debug\MovieMakerTests.csprojResolveAssemblyReference.cache
+C:\projects\MovieMaker\MovieMaker\MovieMakerTests\obj\Debug\MovieMakerTests.dll
+C:\projects\MovieMaker\MovieMaker\MovieMakerTests\obj\Debug\MovieMakerTests.pdb

@@ -44,9 +44,7 @@ namespace MovieMaker
 
             setMovieNames();
 
-            setMovieLabelsAndComboboxes();
-
-            
+            setMovieLabelsAndComboboxes();         
         }
 
         private void button_submit_Click(object sender, RoutedEventArgs e)
