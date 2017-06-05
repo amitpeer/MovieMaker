@@ -229,25 +229,83 @@ namespace MovieMaker.model
             return allKeys;
         }
 
-        public double testBeitzim()
+        public Dictionary<string, double> rank(Dictionary<string, double> ranksVector)
         {
+            MoviesList = readSCVMovieFile(local_path + "\\model\\dataBase\\movies.csv");
             MovieRatingList = readSCVRatingFile(local_path + "\\model\\dataBase\\ratings.csv");
-            MovieRatingList = cutTo100Users();
-            
-
-            return -1;
+            addUserMoviesToUserDictionary(ranksVector.Keys.ToList());
+            findSelectedMoviesID(selectedMovieNamesID);
+            reversedDictoinary = reverseDictionary();
+            Dictionary<string, double> recommend = new Dictionary<string, double>();
+            findCommonMoviesRating();
+            findUserAvg(ranksVector);
+            calculateUserAverageRating();
+            recommend = findP(pearsonCorreleationWeight(ranksVector));
+            return recommend;
+        }
+        
+        public double testBeitzim()
+        {         
+            List<User> userList = cutTo100Users();
+            Dictionary<string, double> ranks = new Dictionary<string, double>();
+            double totalRMSE = 0;
+            foreach (User user in userList)
+            {
+                ranks = rank(user.trainSet);
+                double sigma = 0;
+                foreach (KeyValuePair<string, double> userTestRanks in user.testSet)
+                {
+                    double userRank = userTestRanks.Value;
+                    double predictedRank = ranks[userTestRanks.Key];
+                    sigma += Math.Pow(predictedRank - userRank, 2);   
+                }
+                totalRMSE += Math.Sqrt(sigma / user.testSet.Count);
+                ranks = new Dictionary<string, double>();
+            }
+            return totalRMSE / userList.Count;
         }
 
-        private List<MovieRating> cutTo100Users()
+        public List<User> cutTo100Users()
         {
+            MovieRatingList = readSCVRatingFile(local_path + "\\model\\dataBase\\ratings.csv");
+            MoviesList = readSCVMovieFile(local_path + "\\model\\dataBase\\movies.csv");
+            List<User> userList = new List<User>();
+            User user = new User();
+            Dictionary<string, double> test = new Dictionary<string, double>();
+            Dictionary<string, double> train = new Dictionary<string, double>();
             int counter = 0;
+            int lastUser = 1;
             foreach(MovieRating mr in MovieRatingList)
             {
                 if (mr.UserID == 100)
                     break;
+              
+                if (lastUser != mr.UserID)
+                {                 
+                    user.testSet = new Dictionary<string, double>(test);
+                    user.trainSet = new Dictionary<string, double>(train);
+                    user.userId = lastUser - 1;
+                    userList.Add(user);        
+                    user = new User();
+                    lastUser++;
+                    test = new Dictionary<string, double>();
+                    train = new Dictionary<string, double>();
+                }
+
+                if (counter % 2 == 0)
+                {
+                    test.Add(MoviesList.Where(m => m.MovieID == mr.MovieID).First().MovieName, mr.UserRating);
+                }
+                else
+                {
+                    train.Add(MoviesList.Where(m => m.MovieID == mr.MovieID).First().MovieName, mr.UserRating);
+                }
+
                 counter++;        
             }
-            return MovieRatingList.Take(counter).ToList();
+            MovieRatingList = new List<MovieRating>();
+            MoviesList = new List<Movie>();
+            return userList;
         }
 
         //reading methods
@@ -329,6 +387,13 @@ namespace MovieMaker.model
             MovieID = movieID;
             UserRating = userRating;
         }
+    }
+
+    public class User
+    {
+        public int userId;
+        public Dictionary<string, double> testSet;
+        public Dictionary<string, double> trainSet;
     }
 
     public class Movie

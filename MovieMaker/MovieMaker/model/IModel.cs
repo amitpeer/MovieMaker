@@ -16,5 +16,9 @@ namespace MovieMaker.model
         void calculateUserAverageRating();
 
         double testBeitzim();
+
+        Dictionary<string, double> rank(Dictionary<string, double> ranksVector);
+
+        List<User> cutTo100Users();
     }
 }
