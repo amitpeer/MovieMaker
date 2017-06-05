@@ -18,9 +18,9 @@ namespace MovieMaker.model
 
 
         private IController _controller;
-        private Dictionary<string,int> selectedMovieNamesID = new Dictionary<string, int>();
-        private Dictionary<int, Dictionary<int,double>> CommonMoviesRating = new Dictionary<int, Dictionary<int, double>>();
-        private Dictionary<int,double> otherUsersAverageRating = new Dictionary<int, double>();
+        private Dictionary<string, int> selectedMovieNamesID = new Dictionary<string, int>();
+        private Dictionary<int, Dictionary<int, double>> CommonMoviesRating = new Dictionary<int, Dictionary<int, double>>();
+        private Dictionary<int, double> otherUsersAverageRating = new Dictionary<int, double>();
         List<MovieRating> MovieRatingList;
         List<Movie> MoviesList;
         double userAvgRating;
@@ -29,21 +29,24 @@ namespace MovieMaker.model
         Dictionary<int, string> movieName = new Dictionary<int, string>();
 
         public Model()
-        {                   
-            selectedMovieNamesID.Add("Ace Ventura: When Nature Calls (1995)", 0);
-            selectedMovieNamesID.Add("Toy Story (1995)", 0);
-            selectedMovieNamesID.Add("Titanic (1997)", 0);
-            selectedMovieNamesID.Add("Terminator 2: Judgment Day (1991)", 0);
-            selectedMovieNamesID.Add("Scary Movie (2000)", 0);
-            selectedMovieNamesID.Add("Lord of the Rings: The Return of the King, The (2003)", 0);
-            selectedMovieNamesID.Add("Saving Private Ryan (1998)", 0);
-            selectedMovieNamesID.Add("Space Jam (1996)", 0);
-            selectedMovieNamesID.Add("Star Wars: Episode V - The Empire Strikes Back (1980)", 0);
-            selectedMovieNamesID.Add("Grease (1978)", 0);          
-        }
+        {
 
+
+            //selectedMovieNamesID.Add("Ace Ventura: When Nature Calls (1995)", 0);
+            //selectedMovieNamesID.Add("Toy Story (1995)", 0);
+            //selectedMovieNamesID.Add("Titanic (1997)", 0);
+            //selectedMovieNamesID.Add("Terminator 2: Judgment Day (1991)", 0);
+            //selectedMovieNamesID.Add("Scary Movie (2000)", 0);
+            //selectedMovieNamesID.Add("Lord of the Rings: The Return of the King, The (2003)", 0);
+            //selectedMovieNamesID.Add("Saving Private Ryan (1998)", 0);
+            //selectedMovieNamesID.Add("Space Jam (1996)", 0);
+            //selectedMovieNamesID.Add("Star Wars: Episode V - The Empire Strikes Back (1980)", 0);
+            //selectedMovieNamesID.Add("Grease (1978)", 0);
+
+
+        }
         public void findSelectedMoviesID(Dictionary<string, int> movieNamesID)
-        {            
+        {
             foreach (var movie in MoviesList)
             {
                 if (movieNamesID.Keys.Contains(movie.MovieName))
@@ -53,10 +56,14 @@ namespace MovieMaker.model
             }
         }
 
+
+
         public void findCommonMoviesRating()
         {
             foreach (var movieRating in MovieRatingList)
             {
+
+
                 if (selectedMovieNamesID.Values.Contains(movieRating.MovieID))
                 {
                     if (!CommonMoviesRating.Keys.Contains(movieRating.UserID))
@@ -69,7 +76,8 @@ namespace MovieMaker.model
                         CommonMoviesRating[movieRating.UserID].Add(movieRating.MovieID, movieRating.UserRating);
                     }
 
-                }              
+                }
+
             }
         }
 
@@ -93,7 +101,7 @@ namespace MovieMaker.model
             var a = findListRatingByMovieID[362];
         }
 
-        public Dictionary<int,string> reverseDictionary()
+        public Dictionary<int, string> reverseDictionary()
         {
             Dictionary<int, string> reversed = new Dictionary<int, string>();
             foreach (var item in selectedMovieNamesID)
@@ -116,11 +124,11 @@ namespace MovieMaker.model
                 {
 
                     Numerator += ((findListRatingByMovieID[movieId][i].UserRating) - (otherUsersAverageRating[findListRatingByMovieID[movieId][i].UserID])) * W[findListRatingByMovieID[movieId][i].UserID];
-                     sumW += W[findListRatingByMovieID[movieId][i].UserID];
+                    sumW += W[findListRatingByMovieID[movieId][i].UserID];
                 }
 
                 double p = userAvgRating + (Numerator / sumW);
-                if(result.Keys.Contains(movieName[movieId]))
+                if (result.Keys.Contains(movieName[movieId]))
                 {
                     continue;
                 }
@@ -154,11 +162,11 @@ namespace MovieMaker.model
 
         public void calculateUserAverageRating()
         {
-            
+
             Dictionary<int, int> countRatingsToUser = new Dictionary<int, int>();
-            foreach(var movieRating in MovieRatingList)
+            foreach (var movieRating in MovieRatingList)
             {
-                if(!otherUsersAverageRating.ContainsKey(movieRating.UserID))
+                if (!otherUsersAverageRating.ContainsKey(movieRating.UserID))
                 {
                     otherUsersAverageRating[movieRating.UserID] = movieRating.UserRating;
                     countRatingsToUser[movieRating.UserID] = 1;
@@ -176,20 +184,20 @@ namespace MovieMaker.model
             }
         }
 
-        private Dictionary<int,double> pearsonCorreleationWeight(Dictionary<string, double> ranksVector)
+        private Dictionary<int, double> pearsonCorreleationWeight(Dictionary<string, double> ranksVector)
         {
             Dictionary<int, double> usersWeights = new Dictionary<int, double>();
             double sum1 = 0;
             double sum2 = 0;
             double sum3 = 0;
             //first calculation            
-            foreach(var user in CommonMoviesRating.Keys)
+            foreach (var user in CommonMoviesRating.Keys)
             {
-                foreach(var movieRating in CommonMoviesRating[user])
+                foreach (var movieRating in CommonMoviesRating[user])
                 {
-                    sum1 +=(ranksVector[reversedDictoinary[movieRating.Key]]- userAvgRating)*(movieRating.Value - otherUsersAverageRating[user]);
+                    sum1 += (ranksVector[reversedDictoinary[movieRating.Key]] - userAvgRating) * (movieRating.Value - otherUsersAverageRating[user]);
                     sum2 += Math.Pow((ranksVector[reversedDictoinary[movieRating.Key]] - userAvgRating), 2);
-                    sum3 += Math.Pow((movieRating.Value - otherUsersAverageRating[user]), 2);                    
+                    sum3 += Math.Pow((movieRating.Value - otherUsersAverageRating[user]), 2);
                 }
                 double sum4 = Math.Sqrt(sum2 * sum3);
                 double sum5 = sum1 / sum4;
@@ -198,36 +206,53 @@ namespace MovieMaker.model
             }
             return usersWeights;
         }
-        
+
 
         public void setController(IController controller)
         {
             _controller = controller;
         }
 
+        public List<string> addRanks(Dictionary<string, double> newRanksVector)
+        {
+            throw new NotImplementedException();
+        }
+
+        public double moviePredictedRank(string movie)
+        {
+            throw new NotImplementedException();
+        }
+        private void addUserMoviesToUserDictionary(List<string> userMoviesList)
+        {
+            foreach (var movieName in userMoviesList)
+            {
+                selectedMovieNamesID.Add(movieName, 0);
+            }
+        }
         public List<string> recommend(Dictionary<string, double> ranksVector)
         {
-            try
-            {
-                MoviesList = readSCVMovieFile(local_path + "\\model\\dataBase\\movies.csv");
-                MovieRatingList = readSCVRatingFile(local_path + "\\model\\dataBase\\ratings.csv");
-                findSelectedMoviesID(selectedMovieNamesID);
-                reversedDictoinary = reverseDictionary();
-                Dictionary<string, double> recommend = new Dictionary<string, double>();
-                findCommonMoviesRating();
-                findUserAvg(ranksVector);
-                calculateUserAverageRating();
-                recommend = findP(pearsonCorreleationWeight(ranksVector));
-                List<KeyValuePair<string, double>> top5 = recommend.OrderByDescending(pair => pair.Value).Take(5).ToList();
-                List<string> allKeys = (from kvp in top5 select kvp.Key).ToList();
-                return allKeys;
-            }
-            catch (Exception e)
-            {
-                List<string> errorMessage = new List<string>();
-                errorMessage.Add("recommendError");
-                return errorMessage;
-            }
+            MoviesList = readSCVMovieFile(local_path + "\\model\\dataBase\\movies.csv");
+            MovieRatingList = readSCVRatingFile(local_path + "\\model\\dataBase\\ratings.csv");
+            addUserMoviesToUserDictionary(ranksVector.Keys.ToList());
+            findSelectedMoviesID(selectedMovieNamesID);
+            reversedDictoinary = reverseDictionary();
+            Dictionary<string, double> recommend = new Dictionary<string, double>();
+            findCommonMoviesRating();
+            findUserAvg(ranksVector);
+            calculateUserAverageRating();
+            recommend = findP(pearsonCorreleationWeight(ranksVector));
+            List<KeyValuePair<string, double>> top5 = recommend.OrderByDescending(pair => pair.Value).Take(5).ToList();
+            List<string> allKeys = (from kvp in top5 select kvp.Key).ToList();
+            return allKeys;
+
+
+        }
+
+        public double testsystemPressicion()
+        {
+
+
+            return -1;
         }
 
         //reading methods
@@ -237,14 +262,14 @@ namespace MovieMaker.model
             using (var reader = new StreamReader(fs))
             {
                 reader.ReadLine();
-                List<MovieRating> ratings = new List<MovieRating>();                
+                List<MovieRating> ratings = new List<MovieRating>();
                 while (!reader.EndOfStream)
                 {
                     var line = reader.ReadLine();
                     var values = line.Split(',');
-                    ratings.Add(new MovieRating(Int32.Parse(values[0]) , Int32.Parse(values[1]), Double.Parse(values[2])));
+                    ratings.Add(new MovieRating(Int32.Parse(values[0]), Int32.Parse(values[1]), Double.Parse(values[2])));
                 }
-            return ratings;
+                return ratings;
             }
         }
         public List<Movie> readSCVMovieFile(string path)
@@ -257,7 +282,7 @@ namespace MovieMaker.model
                 while (!reader.EndOfStream)
                 {
                     var line = reader.ReadLine();
-                    if(line.Contains("\""))
+                    if (line.Contains("\""))
                     {
                         var split = line.Split('\"');
                         var id = split[0].Split(',');
@@ -267,10 +292,10 @@ namespace MovieMaker.model
                     }
                     else
                     {
-                    var values = line.Split(',');
-                    List<string> genres = new List<string>(values[2].Split('|'));
-                    movies.Add(new Movie(values[1], Int32.Parse(values[0]), null));
-                    movieName.Add(Int32.Parse(values[0]), values[1]);
+                        var values = line.Split(',');
+                        List<string> genres = new List<string>(values[2].Split('|'));
+                        movies.Add(new Movie(values[1], Int32.Parse(values[0]), null));
+                        movieName.Add(Int32.Parse(values[0]), values[1]);
 
                     }
 
