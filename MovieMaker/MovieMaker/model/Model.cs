@@ -30,21 +30,8 @@ namespace MovieMaker.model
 
         public Model()
         {
-
-
-            //selectedMovieNamesID.Add("Ace Ventura: When Nature Calls (1995)", 0);
-            //selectedMovieNamesID.Add("Toy Story (1995)", 0);
-            //selectedMovieNamesID.Add("Titanic (1997)", 0);
-            //selectedMovieNamesID.Add("Terminator 2: Judgment Day (1991)", 0);
-            //selectedMovieNamesID.Add("Scary Movie (2000)", 0);
-            //selectedMovieNamesID.Add("Lord of the Rings: The Return of the King, The (2003)", 0);
-            //selectedMovieNamesID.Add("Saving Private Ryan (1998)", 0);
-            //selectedMovieNamesID.Add("Space Jam (1996)", 0);
-            //selectedMovieNamesID.Add("Star Wars: Episode V - The Empire Strikes Back (1980)", 0);
-            //selectedMovieNamesID.Add("Grease (1978)", 0);
-
-
         }
+
         public void findSelectedMoviesID(Dictionary<string, int> movieNamesID)
         {
             foreach (var movie in MoviesList)
@@ -62,8 +49,6 @@ namespace MovieMaker.model
         {
             foreach (var movieRating in MovieRatingList)
             {
-
-
                 if (selectedMovieNamesID.Values.Contains(movieRating.MovieID))
                 {
                     if (!CommonMoviesRating.Keys.Contains(movieRating.UserID))
@@ -75,9 +60,7 @@ namespace MovieMaker.model
                     {
                         CommonMoviesRating[movieRating.UserID].Add(movieRating.MovieID, movieRating.UserRating);
                     }
-
                 }
-
             }
         }
 
@@ -244,15 +227,27 @@ namespace MovieMaker.model
             List<KeyValuePair<string, double>> top5 = recommend.OrderByDescending(pair => pair.Value).Take(5).ToList();
             List<string> allKeys = (from kvp in top5 select kvp.Key).ToList();
             return allKeys;
-
-
         }
 
-        public double testsystemPressicion()
+        public double testBeitzim()
         {
-
+            MovieRatingList = readSCVRatingFile(local_path + "\\model\\dataBase\\ratings.csv");
+            MovieRatingList = cutTo100Users();
+            
 
             return -1;
+        }
+
+        private List<MovieRating> cutTo100Users()
+        {
+            int counter = 0;
+            foreach(MovieRating mr in MovieRatingList)
+            {
+                if (mr.UserID == 100)
+                    break;
+                counter++;        
+            }
+            return MovieRatingList.Take(counter).ToList();
         }
 
         //reading methods

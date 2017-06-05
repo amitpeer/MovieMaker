@@ -14,5 +14,7 @@ namespace MovieMaker.model
         List<string> recommend(Dictionary<string, double> ranksVector);
 
         void calculateUserAverageRating();
+
+        double testBeitzim();
     }
 }

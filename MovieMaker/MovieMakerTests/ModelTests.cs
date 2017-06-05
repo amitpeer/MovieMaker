@@ -57,7 +57,7 @@ namespace MovieMakerTests
         [TestMethod]
         public void testSystemPresicion()
         {
-
+            model.testBeitzim();
         }
 
         private void addRanks(double rank)
